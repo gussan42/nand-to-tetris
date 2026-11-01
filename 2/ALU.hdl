@@ -50,10 +50,9 @@ CHIP ALU {
     Add16(a=resnx, b=resny, out=resadd);
     Mux16(a=resand, b=resadd, sel=f, out=resf);
     Not16(in=resf, out=resfno);
-    Mux16(a=resf, b=resfno, sel=no, out=out, out[0..7]=tmpout0, out[8..15]=tmpout1, out[15]=topout);
+    Mux16(a=resf, b=resfno, sel=no, out=out, out[0..7]=tmpout0, out[8..15]=tmpout1, out[15]=ng);
     Or8Way(in=tmpout0, out=resor0);
     Or8Way(in=tmpout1, out=resor1);
     Or(a=resor0, b=resor1, out=resor);
     Not(in=resor, out=zr);
-    Mux(a=false, b=true, sel=topout, out=ng);
 }
